@@ -1,0 +1,20 @@
+
+                {% extends 'layout.html' %}
+
+                {% block title %}
+                <title>DELETE CONFORMATIONS</title>
+                {% endblock %}
+
+                {% block content %}
+                <div class="container jumbotron">
+                    <form method="post">
+                        {% csrf_token %}
+                        <center>
+                            <p>DO YOU WANT TO DELETE <span style="color:red">{{data.roll}}{{data.fname}}{{data.lname}}</span>record ?</p>
+                        </center>
+                        <input type="submit" value="YES" class="btn btn-outline-danger col-6">
+                        <a href="{% url 'show_url' %}"><button type="button" class="btn btn-outline-warning col-6 float-right">NO</button></a>
+
+                    </form>
+                </div>
+                {% endblock %}
