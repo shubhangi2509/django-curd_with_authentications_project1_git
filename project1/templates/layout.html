@@ -17,8 +17,12 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="{% url 'add_url' %}">ADD STUDENT</a>
       <a class="nav-item nav-link" href="{% url 'show_url' %}">SHOW</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      {% if user.is_authenticated %}
+      <a class="nav-item nav-link" href="{% url 'signout_url' %}" style="padding-left:700px;"><span style="color:red">{{user.username}}</span>LOGOUT</a>
+      {% else %}
+      <a class="nav-item nav-link disabled" href="{% url 'signin_url' %}"style="padding-left:750px;">SIGN IN</a>
+      <a class="nav-item nav-link disabled" href="{% url 'signin_url' %}">SIGN UP</a>
+      {% endif %}
     </div>
   </div>
 </nav>

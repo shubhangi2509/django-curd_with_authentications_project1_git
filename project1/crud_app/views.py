@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
-from .forms import  StudentForm,Student
-from .models import  Student
+from .forms import StudentForm,Student
+from .models import Student
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
-
+@login_required(login_url='signin_url')
 def add_student_view(request):
     form = StudentForm()
     if request.method == 'POST':
@@ -18,7 +19,7 @@ def add_student_view(request):
     return render(request, template_name, context)
 
 
-
+@login_required(login_url='signin_url')
 def show_view(request):
     obj = Student.objects.all()
     template_name = 'crud_app/show.html'
